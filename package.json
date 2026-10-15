@@ -18,7 +18,8 @@
     "test:e2e": "playwright test",
     "fonts": "node scripts/build-fonts.mjs",
     "predev": "node scripts/build-fonts.mjs",
-    "prebuild": "node scripts/build-fonts.mjs"
+    "prebuild": "node scripts/build-fonts.mjs",
+    "ogp": "node scripts/build-ogp.mjs"
   },
   "dependencies": {
     "@fontsource/zen-maru-gothic": "^5.3.1",

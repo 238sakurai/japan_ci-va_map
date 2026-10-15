@@ -37,6 +37,8 @@ Vite / React 19 / TypeScript (strict) / Tailwind CSS v4 / Motion / SVG / TopoJSO
 ├── scripts/
 │   ├── fetch-n03.mjs       # 国土数値情報 N03 のダウンロード
 │   ├── build-geo.mjs       # 投影・単純化してゲーム用 JSON を生成
+│   ├── build-ogp.mjs       # SNS シェア用のアイキャッチ画像（public/og-image.png）を生成
+│   ├── build-fonts.mjs     # 使用文字だけのフォントサブセット CSS を生成
 │   └── validate-data.mjs   # 生成データの検証
 ├── src/
 │   ├── app/          # App（画面遷移）、AppContext、モード設定
@@ -72,6 +74,17 @@ npm run preview
 ```
 
 `BASE_PATH=/ npm run build` のようにすると、ルート公開用（`<user>.github.io` リポジトリ）のビルドになります。
+
+### アイキャッチ画像（OGP）
+
+SNS でシェアしたときの画像は `public/og-image.png`（1200×630）です。地図の色や文言を変えたら再生成してコミットしてください。
+
+```bash
+npx playwright install chromium   # 初回のみ
+npm run ogp
+```
+
+`og:image` などの絶対 URL は、ビルド時に `index.html` の `%SITE_URL%` を公開 URL に置き換えて作ります。独自ドメインで公開するときは `SITE_URL=https://example.com/ npm run build` のように指定します。
 
 ## テスト
 
