@@ -1,0 +1,189 @@
+@import 'tailwindcss';
+@import './fonts.css';
+
+@theme {
+  --breakpoint-xs: 380px;
+  --font-sans:
+    'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'BIZ UDPGothic', 'Noto Sans JP', system-ui,
+    sans-serif;
+  --color-primary: #e94747;
+  --color-primary-dark: #c93535;
+  --color-cream: #fff1b8;
+  --color-mint: #a8e6cf;
+  --color-sky: #b8e4ff;
+  --color-paper: #fffdf7;
+  --color-ink: #453830;
+  --color-ink-soft: #7d6b5f;
+  --color-correct: #58c78e;
+  --color-correct-dark: #2f9d66;
+  --color-wrong: #ffb56b;
+  --color-wrong-dark: #d9842f;
+  --color-line: #eadfd2;
+  --color-sun: #ffe066;
+  --shadow-pop: 0 4px 0 0 rgb(69 56 48 / 0.18);
+  --shadow-pop-sm: 0 3px 0 0 rgb(69 56 48 / 0.16);
+  --shadow-card: 0 8px 24px -8px rgb(69 56 48 / 0.25);
+  --radius-bubble: 1.5rem;
+  /* 同梱フォントは 500/700 の2ウェイト。black は 700 に寄せて転送量を抑える */
+  --font-weight-black: 700;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgb(184 228 255 / 0.55) 0, transparent 28%),
+    radial-gradient(circle at 88% 8%, rgb(255 241 184 / 0.8) 0, transparent 26%),
+    radial-gradient(circle at 80% 90%, rgb(168 230 207 / 0.5) 0, transparent 30%);
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
+
+ruby {
+  ruby-align: center;
+}
+
+rt {
+  font-size: 0.45em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--color-ink-soft);
+}
+
+/* セーフエリア */
+.safe-pad {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+  padding-top: max(0.5rem, env(safe-area-inset-top));
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
+
+/* 地図のタップ対象 */
+.map-svg {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.map-area {
+  transition: fill 0.25s ease, stroke 0.25s ease, opacity 0.25s ease;
+  cursor: pointer;
+}
+
+.map-area:focus {
+  outline: none;
+}
+
+.map-area:focus-visible {
+  stroke: var(--color-ink);
+  stroke-width: 4;
+}
+
+@keyframes map-glow {
+  0%,
+  100% {
+    fill: #ffe066;
+    stroke: #f5b800;
+    stroke-width: 3;
+  }
+  50% {
+    fill: #fff6c2;
+    stroke: #ffd43b;
+    stroke-width: 6;
+  }
+}
+
+.map-glow {
+  animation: map-glow 1.1s ease-in-out infinite;
+}
+
+@keyframes hint-pulse {
+  0%,
+  100% {
+    stroke-width: 2;
+  }
+  50% {
+    stroke-width: 5;
+  }
+}
+
+.map-hint {
+  stroke: #f5b800 !important;
+  animation: hint-pulse 1s ease-in-out infinite;
+}
+
+@keyframes candidate-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.map-candidate {
+  stroke: var(--color-primary) !important;
+  stroke-width: 4 !important;
+  stroke-dasharray: 8 6;
+  animation: candidate-dash 0.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-glow,
+  .map-hint,
+  .map-candidate {
+    animation: none;
+  }
+  .map-glow {
+    fill: #ffe066;
+    stroke: #f5b800;
+    stroke-width: 4;
+  }
+}
+
+.text-halo {
+  paint-order: stroke fill;
+  stroke: #fffdf7;
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+/* ボタンの押し込み */
+.btn-pop {
+  box-shadow: var(--shadow-pop);
+  transform: translateY(0);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, filter 0.15s ease;
+}
+
+.btn-pop:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 rgb(69 56 48 / 0.18);
+}
+
+.btn-pop:disabled {
+  filter: saturate(0.5);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.focus-ring:focus-visible {
+  outline: 4px solid rgb(69 56 48 / 0.5);
+  outline-offset: 3px;
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
