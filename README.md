@@ -4,7 +4,7 @@
 
 - 対象: 小学生（保護者・教職員・千葉県民・地理好きの大人も）
 - 完全な静的 Web アプリ（サーバー・ログイン・外部 API 不要、スマホ対応）
-- 公開 URL: `https://<GitHubユーザー名>.github.io/<リポジトリ名>/`（設定後に書き換えてください）
+- 公開 URL: https://238sakurai.github.io/japan_ci-va_map/
 
 > **注意**: 公式のチーバくん画像は含んでいません。利用には千葉県の許諾が必要です。[docs/chibakun-usage-notes.md](docs/chibakun-usage-notes.md) を参照してください。
 
@@ -88,7 +88,7 @@ E2E では `?seed=<数値>` で出題順を固定しています。
 1. リポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** にする。
 2. `main` ブランチに push する（または Actions タブから `Deploy to GitHub Pages` を手動実行する）。
 3. ワークフローが型チェック → 単体テスト → ビルド → デプロイを行う。
-4. 公開 URL は `https://<ユーザー名>.github.io/<リポジトリ名>/`。この README の公開 URL を書き換える。
+4. 公開 URL は https://238sakurai.github.io/japan_ci-va_map/ （リポジトリを変えたときはこの README を書き換える）。
 
 ### 公開 URL（base パス）の設定
 
