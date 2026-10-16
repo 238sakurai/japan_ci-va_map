@@ -70,9 +70,6 @@ export function AboutScreen({ onBack }: { onBack: () => void }) {
 
       <Section title="ライセンス">
         <p>プログラムは MIT ライセンスで公開しています。フォントは Zen Maru Gothic（SIL Open Font License 1.1）、効果音は Web Audio API で合成した自作音です。</p>
-        <p>
-          <Link href="https://github.com/238sakurai/japan_ci-va_map">ソースコード（GitHub）</Link>
-        </p>
       </Section>
     </div>
   )
