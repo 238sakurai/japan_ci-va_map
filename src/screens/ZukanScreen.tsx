@@ -35,7 +35,7 @@ export function ZukanScreen({ onBack }: { onBack: () => void }) {
 
       <Card tone="cream" className="p-4">
         <div className="flex items-end justify-between">
-          <p className="text-sm font-bold text-ink-soft">みつけた市</p>
+          <p className="text-sm font-bold text-ink-soft">みつけた市町村</p>
           <p className="text-2xl font-black" data-testid="discovered-count">
             {discovered.length}
             <span className="text-sm"> / {QUIZ_POOL.length}</span>
@@ -50,11 +50,11 @@ export function ZukanScreen({ onBack }: { onBack: () => void }) {
       <div className="h-[34vh] min-h-[200px] w-full">
         {geo && <ChibaMap geo={geo} styles={styles} colorMode="mono" />}
       </div>
-      <p className="text-center text-xs text-ink-soft">せいかいした市から 色が ついていくよ！（いまは 20市、これから 54市町村に ふえるよ）</p>
+      <p className="text-center text-xs text-ink-soft">せいかいした市町村から 色が ついていくよ！（千葉県の 54市町村 ぜんぶが 出てくるよ）</p>
 
       {weak.length > 0 && (
         <Card className="p-3">
-          <p className="text-sm font-black">にがてな市（まちがえた かいすう）</p>
+          <p className="text-sm font-black">にがてな市町村（まちがえた かいすう）</p>
           <ul className="mt-2 flex flex-wrap gap-2">
             {weak.map(({ code, count }) => {
               const m = getMunicipality(code)

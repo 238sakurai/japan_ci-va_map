@@ -78,7 +78,7 @@ export function ResultScreen({ summary, onReplay, onModes, onZukan, onTitle }: R
 
       {summary.wrongCodes.length > 0 && (
         <Card className="p-3">
-          <p className="text-sm font-black">まちがえた市（つぎは がんばろう！）</p>
+          <p className="text-sm font-black">まちがえた市町村（つぎは がんばろう！）</p>
           <ul className="mt-2 flex flex-wrap gap-2" data-testid="wrong-list">
             {summary.wrongCodes.map((code) => {
               const m = getMunicipality(code)
