@@ -11,9 +11,10 @@ interface TitleScreenProps {
   onPlay: () => void
   onHowTo: () => void
   onZukan: () => void
+  onAbout: () => void
 }
 
-export function TitleScreen({ onPlay, onHowTo, onZukan }: TitleScreenProps) {
+export function TitleScreen({ onPlay, onHowTo, onZukan, onAbout }: TitleScreenProps) {
   const { geo, geoError, soundEnabled, toggleSound, reducedMotion, save } = useApp()
   const discoveredCount = QUIZ_POOL.filter((m) => m.code in save.discovered).length
   const styles: Partial<Record<string, AreaStyle>> = {}
@@ -21,7 +22,10 @@ export function TitleScreen({ onPlay, onHowTo, onZukan }: TitleScreenProps) {
 
   return (
     <div className="safe-pad relative mx-auto flex min-h-dvh w-full max-w-lg flex-col items-center gap-3" data-testid="title-screen">
-      <div className="flex w-full items-center justify-end pt-1">
+      <div className="flex w-full items-center justify-between pt-1">
+        <IconButton label="このゲームについて" onClick={onAbout} data-testid="about-button">
+          ℹ️
+        </IconButton>
         <IconButton label={soundEnabled ? '音をけす' : '音をだす'} onClick={toggleSound} aria-pressed={soundEnabled} data-testid="sound-toggle">
           {soundEnabled ? '🔊' : '🔇'}
         </IconButton>

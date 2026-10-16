@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { useCallback, useMemo, useRef, useState } from 'react'
 import { applySummary } from '../lib/storage'
 import { debugOptionsFromLocation } from '../lib/random'
+import { AboutScreen } from '../screens/AboutScreen'
 import { HowToScreen } from '../screens/HowToScreen'
 import { ModeSelectScreen } from '../screens/ModeSelectScreen'
 import { QuizScreen } from '../screens/QuizScreen'
@@ -14,6 +15,7 @@ import { AppProvider, useApp } from './AppContext'
 type Screen =
   | { name: 'title' }
   | { name: 'howto' }
+  | { name: 'about' }
   | { name: 'modes' }
   | { name: 'quiz'; mode: ModeId; run: number }
   | { name: 'result'; summary: GameSummary }
@@ -65,9 +67,15 @@ function Router() {
         className="min-h-dvh"
       >
         {screen.name === 'title' && (
-          <TitleScreen onPlay={() => setScreen({ name: 'modes' })} onHowTo={() => setScreen({ name: 'howto' })} onZukan={() => setScreen({ name: 'zukan', from: 'title' })} />
+          <TitleScreen
+            onPlay={() => setScreen({ name: 'modes' })}
+            onHowTo={() => setScreen({ name: 'howto' })}
+            onZukan={() => setScreen({ name: 'zukan', from: 'title' })}
+            onAbout={() => setScreen({ name: 'about' })}
+          />
         )}
         {screen.name === 'howto' && <HowToScreen onBack={() => setScreen({ name: 'title' })} onPlay={() => setScreen({ name: 'modes' })} />}
+        {screen.name === 'about' && <AboutScreen onBack={() => setScreen({ name: 'title' })} />}
         {screen.name === 'modes' && <ModeSelectScreen onSelect={startMode} onBack={() => setScreen({ name: 'title' })} />}
         {screen.name === 'quiz' && geo && (
           <QuizScreen
