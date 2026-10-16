@@ -163,6 +163,14 @@ test.describe('persistence', () => {
     await page.reload()
     await expect(page.getByTestId('sound-toggle')).toHaveAttribute('aria-pressed', 'false')
   })
+
+  test('opens the about screen from the info button', async ({ page }) => {
+    await page.goto('./')
+    await page.getByTestId('about-button').click()
+    await expect(page.getByTestId('about-screen')).toContainText('千葉県の公式アプリではありません')
+    await page.getByTestId('back-button').click()
+    await expect(page.getByTestId('title-screen')).toBeVisible()
+  })
 })
 
 test.describe('mobile layout', () => {
