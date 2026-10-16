@@ -15,14 +15,14 @@ export function HowToScreen({ onBack, onPlay }: { onBack: () => void; onPlay: ()
       <Card tone="mint" className="p-4">
         <h3 className="text-lg font-black">🗺️ かんたん「どこにあるかな？」</h3>
         <p className="mt-1 text-sm leading-relaxed">
-          市の名前が出るよ。千葉県の地図（チーバくんの体）の中から、その市をさがしてタップ！
+          市町村の名前が出るよ。千葉県の地図（チーバくんの体）の中から、その市町村をさがしてタップ！
           もういちど同じところをタップするか「ここで けってい！」で こたえになるよ。3かいまで こたえられるよ。
         </p>
       </Card>
       <Card tone="sky" className="p-4">
         <h3 className="text-lg font-black">✨ ふつう「ここは何市？」</h3>
         <p className="mt-1 text-sm leading-relaxed">
-          地図の どこかが 黄色く ひかるよ。4つの名前から、ひかっている市を えらぼう！
+          地図の どこかが 黄色く ひかるよ。4つの名前から、ひかっている市町村を えらぼう！
           れんぞくで せいかいすると ボーナスてんが もらえるよ。
         </p>
       </Card>
@@ -39,7 +39,7 @@ export function HowToScreen({ onBack, onPlay }: { onBack: () => void; onPlay: ()
           <li>小さい市は「＋」ボタンや 2本ゆびで 大きくできるよ</li>
           <li>大きくしたら ゆびで うごかせるよ。「⟲」で もとにもどる</li>
           <li>💡ヒントを つかうと ボーナスは なしになるよ</li>
-          <li>せいかいした市は「ちばずかん」に とうろくされるよ</li>
+          <li>せいかいした市町村は「ちばずかん」に とうろくされるよ</li>
         </ul>
       </Card>
 

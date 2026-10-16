@@ -54,16 +54,18 @@ describe('municipality master data', () => {
   })
 })
 
-describe('quiz pool (MVP 20 cities)', () => {
-  it('contains exactly the 20 MVP cities', () => {
-    const names = QUIZ_POOL.map((m) => m.name).sort()
-    expect(names).toEqual(
-      [
-        '千葉市', '船橋市', '市川市', '松戸市', '柏市', '鎌ケ谷市', '浦安市', '習志野市', '成田市', '佐倉市',
-        '木更津市', '市原市', '銚子市', '茂原市', '鴨川市', '館山市', '南房総市', '君津市', '富津市', '流山市',
-      ].sort(),
-    )
-    expect(new Set(QUIZ_POOL.map((m) => m.code)).size).toBe(20)
+describe('quiz pool (all 54 municipalities)', () => {
+  it('covers every municipality exactly once', () => {
+    expect(QUIZ_POOL).toHaveLength(54)
+    expect(new Set(QUIZ_POOL.map((m) => m.code)).size).toBe(54)
+    const codes = QUIZ_POOL.map((m) => m.code)
+    expect([...codes].sort()).toEqual(MUNICIPALITIES.map((m) => m.code).sort())
+  })
+
+  it('mentions the municipality name in its own trivia', () => {
+    for (const m of QUIZ_POOL) {
+      expect(m.trivia, `${m.name} trivia should mention its own name`).toContain(m.name)
+    }
   })
 
   it('has sourced trivia for every entry', () => {
